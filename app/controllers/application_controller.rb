@@ -19,10 +19,11 @@ class ApplicationController < Sinatra::Base
 
 
   post '/todos' do
+    user = User.find_or_create_by(name: params[:name])
     todo = ToDo.create(
+      user_id: user.id,
       task: params[:task],
-      completed: params[:completed],
-      user_id: params[:user_id]
+      completed: params[:completed]
     )
     todo.to_json
   end
