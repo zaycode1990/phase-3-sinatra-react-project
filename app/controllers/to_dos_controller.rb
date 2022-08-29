@@ -1,4 +1,4 @@
-class ToDosContoller < ApplicationController
+class ToDosController < ApplicationController
     get '/todos/all_tasks' do
         todos = ToDo.all_tasks
         todos.to_json
